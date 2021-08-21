@@ -11,12 +11,17 @@ TIMEDIFF=$(expr $CURTIME - $FILETIME)
 
 # Check if file older
 if [ $TIMEDIFF -gt $OLDTIME ]; then
-   echo "not changed"
+    echo "************************************************************"
+    echo "no changes in the content yet!!"
+    echo "************************************************************"
 else
+   echo "#############################################################"
    echo "file has changed changed"
+   echo "#############################################################"
    echo "this is email form ubnut terminal, there is change in the content of the file" | 
    mail -s "Changes Alert!!!!!" xflow@localhost
 
+    node index.js | firefox localhost:8081
 fi
 
 
@@ -24,13 +29,17 @@ fi
 
 #part 2 of the task
 #checking if the webserver is installed or not
-webser=expr sudo systemctl status apache2
+webser= sudo systemctl status apache2 
 loc=which apache2
 if [ loc != "" ]
 then
+    echo =====================================================================
     echo "apache is installed"
+    echo =====================================================================
 else
+    echo ---------------------------------------------------------------------
     echo "apache is not installed"
+    echo ---------------------------------------------------------------------
    # now lets install apache2 if not installed
     #lets update
     sudo apt update
@@ -41,3 +50,4 @@ else
     #after installation check the status
     sudo systemctl status apache2
 fi
+

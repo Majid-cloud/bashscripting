@@ -22,3 +22,10 @@ do
     fi
         echo "$i: the number is odd"
 done
+#!/usr/bin/bash
+
+echo "Content-type: text/html"
+echo ""
+echo "<html><head><title>Demo shell script</title></head><body>"
+echo "Current directory is $(pwd)"
+echo "</body></html>"
